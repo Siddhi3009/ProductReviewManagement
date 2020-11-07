@@ -44,6 +44,8 @@ namespace ProductReviewManagement
             Management management = new Management();
             //Getting Top 3 rated records
             management.TopRecords(productReviewList);
+            //Select specific records with id = 1, 4, 9 and rating > 3
+            management.SelectRecords(productReviewList);
         }
     }
 }

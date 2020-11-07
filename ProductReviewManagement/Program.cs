@@ -50,6 +50,8 @@ namespace ProductReviewManagement
             management.RetrieveCountOfRecords(productReviewList);
             //Gets Product id and reviews
             management.RetrieveProductIdAndReview(productReviewList);
+            //Get all product records except top 5
+            management.RetrieveProductsBySkippingTop5(productReviewList);
         }
     }
 }

@@ -52,6 +52,10 @@ namespace ProductReviewManagement
                 Console.WriteLine(list.ProductId + "------" + list.Count);
             }
         }
+        /// <summary>
+        /// Retrieves product id and review of products
+        /// </summary>
+        /// <param name="listProductReview"></param>
         public void RetrieveProductIdAndReview(List<ProductReview> listProductReview)
         {
             var recordedData = from productReviews in listProductReview
@@ -63,6 +67,20 @@ namespace ProductReviewManagement
             foreach (var list in recordedData)
             {
                 Console.WriteLine("Product Id:- " + list.ProductId + " " + "Review: " + list.Review);
+            }
+        }
+        /// <summary>
+        /// Retrieves products from list by skipping top 5 records
+        /// </summary>
+        /// <param name="listProductReview"></param>
+        public void RetrieveProductsBySkippingTop5(List<ProductReview> listProductReview)
+        {
+            var recordedData = (from productReviews in listProductReview
+                                select productReviews).Skip(5);
+            foreach (var list in recordedData)
+            {
+                Console.WriteLine("ProductID: " + list.ProductId + "UserId: " + list.UserId + "Rating: " + list.Rating
+                    + "Review: " + list.Review + "IsLike: " + list.IsLike);
             }
         }
     }

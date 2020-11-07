@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
-
 namespace ProductReviewManagement
 {
     class Management
     {
+        //Datatable for product records
         public readonly DataTable dataTable = new DataTable();
         /// <summary>
         /// Top rated 3 products are selected from list
@@ -81,6 +81,23 @@ namespace ProductReviewManagement
             {
                 Console.WriteLine("ProductID: " + list.ProductId + "UserId: " + list.UserId + "Rating: " + list.Rating
                     + "Review: " + list.Review + "IsLike: " + list.IsLike);
+            }
+        }
+        /// <summary>
+        /// Adds data to the DataTable
+        /// </summary>
+        /// <param name="listProductReviews"></param>
+        public void AddToDataTableDemo(List<ProductReview> listProductReviews)
+        {
+            DataTable table = new DataTable();
+            table.Columns.Add("ProductId");
+            table.Columns.Add("UserId");
+            table.Columns.Add("Rating");
+            table.Columns.Add("Review");
+            table.Columns.Add("IsLike");
+            foreach (ProductReview product in listProductReviews)
+            {
+                table.Rows.Add(product.ProductId, product.UserId, product.Rating, product.Review, product.IsLike);
             }
         }
     }

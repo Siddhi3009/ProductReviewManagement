@@ -36,22 +36,23 @@ namespace ProductReviewManagement
                 new ProductReview() { ProductId = 5, UserId = 1, Rating = 4, Review = "bad", IsLike = true },
                 new ProductReview() { ProductId = 10, UserId = 1, Rating = 7, Review = "nice", IsLike = true },
             };
-            foreach (var list in productReviewList)
-            {
-                Console.WriteLine("ProductID: " + list.ProductId + "UserId: " + list.UserId + "Rating: " + list.Rating
-                    + "Review: " + list.Review + "IsLike: " + list.IsLike);
-            }
+            //foreach (var list in productReviewList)
+            //{
+            //    Console.WriteLine("ProductID: " + list.ProductId + "UserId: " + list.UserId + "Rating: " + list.Rating
+            //        + "Review: " + list.Review + "IsLike: " + list.IsLike);
+            //}
             Management management = new Management();
-            //Getting Top 3 rated records
-            management.TopRecords(productReviewList);
-            //Select specific records with id = 1, 4, 9 and rating > 3
-            management.SelectRecords(productReviewList);
-            //Counts products by product id
-            management.RetrieveCountOfRecords(productReviewList);
-            //Gets Product id and reviews
-            management.RetrieveProductIdAndReview(productReviewList);
-            //Get all product records except top 5
-            management.RetrieveProductsBySkippingTop5(productReviewList);
+            ////Getting Top 3 rated records
+            //management.TopRecords(productReviewList);
+            ////Select specific records with id = 1, 4, 9 and rating > 3
+            //management.SelectRecords(productReviewList);
+            ////Counts products by product id
+            //management.RetrieveCountOfRecords(productReviewList);
+            ////Gets Product id and reviews
+            //management.RetrieveProductIdAndReview(productReviewList);
+            ////Get all product records except top 5
+            //management.RetrieveProductsBySkippingTop5(productReviewList);
+            management.AddToDataTableDemo(productReviewList);
         }
     }
 }

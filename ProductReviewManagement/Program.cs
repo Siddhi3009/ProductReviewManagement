@@ -48,6 +48,8 @@ namespace ProductReviewManagement
             management.SelectRecords(productReviewList);
             //Counts products by product id
             management.RetrieveCountOfRecords(productReviewList);
+            //Gets Product id and reviews
+            management.RetrieveProductIdAndReview(productReviewList);
         }
     }
 }

@@ -46,6 +46,8 @@ namespace ProductReviewManagement
             management.TopRecords(productReviewList);
             //Select specific records with id = 1, 4, 9 and rating > 3
             management.SelectRecords(productReviewList);
+            //Counts products by product id
+            management.RetrieveCountOfRecords(productReviewList);
         }
     }
 }

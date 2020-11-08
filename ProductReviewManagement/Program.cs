@@ -62,6 +62,8 @@ namespace ProductReviewManagement
             management.GetAverageRatingByProductId(table);
             //nice review products retrieved
             management.RetrieveNiceReviewProductsFromDataTable(table);
+            //Order products of user id = 1 by rating
+            management.OrderProductsByRating(1, table);
         }
     }
 }

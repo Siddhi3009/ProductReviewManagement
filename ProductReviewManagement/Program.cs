@@ -60,6 +60,8 @@ namespace ProductReviewManagement
             management.RetrieveIsLikeTrueProductsFromDataTable(table);
             //Average of ratings grouped by productId
             management.GetAverageRatingByProductId(table);
+            //nice review products retrieved
+            management.RetrieveNiceReviewProductsFromDataTable(table);
         }
     }
 }

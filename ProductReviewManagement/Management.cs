@@ -130,6 +130,10 @@ namespace ProductReviewManagement
                 Console.Write(row.Field<int>("ProductId") + "\t" + row.Field<int>("UserId") + "\t" + row.Field<double>("Rating") + "\t" + row.Field<string>("Review") + "\t" + row.Field<bool>("IsLike") + "\n");
             }
         }
+        /// <summary>
+        /// Gets average rating according to productId
+        /// </summary>
+        /// <param name="table"></param>
         public void GetAverageRatingByProductId(DataTable table)
         {
             var recordedData = from products in table.AsEnumerable()
@@ -138,6 +142,20 @@ namespace ProductReviewManagement
             foreach (var row in recordedData)
             {
                 Console.Write(row.ProductId + "\t" + row.Average + "\n");
+            }
+        }
+        /// <summary>
+        /// Retrieves products which contain nice in their review
+        /// </summary>
+        /// <param name="table"></param>
+        public void RetrieveNiceReviewProductsFromDataTable(DataTable table)
+        {
+            var recordedData = from products in table.AsEnumerable()
+                               where products.Field<string>("Review").Contains("nice")
+                               select products;
+            foreach (var row in recordedData)
+            {
+                Console.Write(row.Field<int>("ProductId") + "\t" + row.Field<int>("UserId") + "\t" + row.Field<double>("Rating") + "\t" + row.Field<string>("Review") + "\t" + row.Field<bool>("IsLike") + "\n");
             }
         }
     }

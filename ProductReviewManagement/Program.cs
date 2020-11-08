@@ -58,6 +58,8 @@ namespace ProductReviewManagement
             DataTable table = management.AddToDataTable(productReviewList);
             //Retrieves products with isLike = true
             management.RetrieveIsLikeTrueProductsFromDataTable(table);
+            //Average of ratings grouped by productId
+            management.GetAverageRatingByProductId(table);
         }
     }
 }

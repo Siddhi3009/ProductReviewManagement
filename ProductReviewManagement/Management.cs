@@ -122,12 +122,22 @@ namespace ProductReviewManagement
         /// <param name="table"></param>
         public void RetrieveIsLikeTrueProductsFromDataTable(DataTable table)
         {
-            var productNames = from products in table.AsEnumerable()
+            var recordedData = from products in table.AsEnumerable()
                                where products.Field<bool>("IsLike") == true
                                select products;
-            foreach (var row in productNames)
+            foreach (var row in recordedData)
             {
                 Console.Write(row.Field<int>("ProductId") + "\t" + row.Field<int>("UserId") + "\t" + row.Field<double>("Rating") + "\t" + row.Field<string>("Review") + "\t" + row.Field<bool>("IsLike") + "\n");
+            }
+        }
+        public void GetAverageRatingByProductId(DataTable table)
+        {
+            var recordedData = from products in table.AsEnumerable()
+                               group products by products.Field<int>("ProductId") into g
+                               select new { ProductId = g.Key, Average = g.Average(a => a.Field<double>("Rating")) };
+            foreach (var row in recordedData)
+            {
+                Console.Write(row.ProductId + "\t" + row.Average + "\n");
             }
         }
     }

@@ -7,8 +7,8 @@ namespace ProductReviewManagement
 {
     class Management
     {
-        //Datatable for product records
-        public readonly DataTable dataTable = new DataTable();
+        ////Datatable for product records
+        //public readonly DataTable dataTable = new DataTable();
         /// <summary>
         /// Top rated 3 products are selected from list
         /// </summary>
@@ -87,17 +87,47 @@ namespace ProductReviewManagement
         /// Adds data to the DataTable
         /// </summary>
         /// <param name="listProductReviews"></param>
-        public void AddToDataTableDemo(List<ProductReview> listProductReviews)
+        public DataTable AddToDataTable(List<ProductReview> listProductReviews)
         {
             DataTable table = new DataTable();
-            table.Columns.Add("ProductId");
-            table.Columns.Add("UserId");
-            table.Columns.Add("Rating");
-            table.Columns.Add("Review");
-            table.Columns.Add("IsLike");
+            table.Columns.Add("ProductId", typeof(int));
+            table.Columns.Add("UserId", typeof(int));
+            table.Columns.Add("Rating", typeof(double));
+            table.Columns.Add("Review", typeof(string));
+            table.Columns.Add("IsLike", typeof(bool));
             foreach (ProductReview product in listProductReviews)
             {
                 table.Rows.Add(product.ProductId, product.UserId, product.Rating, product.Review, product.IsLike);
+            }
+            return table;
+        }
+        /// <summary>
+        /// Retrieve all data from datatable
+        /// </summary>
+        /// <param name="table"></param>
+        public void RetrieveData(DataTable table)
+        {
+            foreach (DataRow row in table.Rows)
+            {
+                foreach (DataColumn column in table.Columns)
+                {
+                    Console.Write(row[column] + "\t");
+                }
+                Console.WriteLine();
+            }
+        }
+        /// <summary>
+        /// Retrieves products with IsLike = true
+        /// </summary>
+        /// <param name="table"></param>
+        public void RetrieveIsLikeTrueProductsFromDataTable(DataTable table)
+        {
+            var productNames = from products in table.AsEnumerable()
+                               where products.Field<bool>("IsLike") == true
+                               select products;
+            foreach (var row in productNames)
+            {
+                Console.Write(row.Field<int>("ProductId") + "\t" + row.Field<int>("UserId") + "\t" + row.Field<double>("Rating") + "\t" + row.Field<string>("Review") + "\t" + row.Field<bool>("IsLike") + "\n");
             }
         }
     }
